@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stryde Footwear - Modern Performance Shoes</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        /* Set default font to Inter (Tailwind default) and smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom styles for button ripple effect (pure CSS/JS is complex, using classes for visual feedback) */
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#4f46e5',
+                        'dark-gray': '#1f2937',
+                        'light-bg': '#f3f4f6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-bg text-dark-gray">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-extrabold text-primary-blue tracking-wider rounded-lg p-1">STRYDE</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
+                    <a href="#featured" class="text-dark-gray hover:text-primary-blue px-3 py-2 text-sm font-medium transition duration-150 ease-in-out rounded-lg">Featured</a>
+                    <a href="#products" class="text-dark-gray hover:text-primary-blue px-3 py-2 text-sm font-medium transition duration-150 ease-in-out rounded-lg">Shop</a>
+                    <a href="#features" class="text-dark-gray hover:text-primary-blue px-3 py-2 text-sm font-medium transition duration-150 ease-in-out rounded-lg">Tech</a>
+                    <a href="#cta" class="bg-primary-blue text-white hover:bg-indigo-600 px-4 py-2 text-sm font-medium transition duration-150 ease-in-out rounded-xl shadow-md">Cart (0)</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-dark-gray hover:text-primary-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-blue" aria-controls="mobile-menu" aria-expanded="false">
+                        <!-- Hamburger icon -->
+                        <svg id="menu-icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close icon (hidden by default) -->
+                        <svg id="menu-icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#featured" class="block px-3 py-2 rounded-md text-base font-medium text-dark-gray hover:bg-gray-100">Featured</a>
+                <a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-dark-gray hover:bg-gray-100">Shop</a>
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-dark-gray hover:bg-gray-100">Tech</a>
+                <a href="#cta" class="block px-3 py-2 rounded-md text-base font-medium bg-primary-blue text-white">Cart (0)</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-white pt-10 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 mt-10 lg:mt-0">
+                    <span class="text-sm font-semibold uppercase tracking-wider text-primary-blue block mb-2">New Release 2025</span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-dark-gray leading-tight">
+                        The Apollo <span class="block text-primary-blue">Runners</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Experience gravity-defying comfort with our new Zero-G foam sole. Designed for peak performance, maximum stability, and an unbeatable smooth stride.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#products" class="btn-primary bg-primary-blue text-white text-lg px-8 py-3 rounded-xl font-bold hover:bg-indigo-600 transition duration-300 shadow-xl text-center">
+                            Shop Now
+                        </a>
+                        <a href="#features" class="text-dark-gray text-lg px-8 py-3 rounded-xl font-medium border border-gray-300 hover:bg-gray-200 transition duration-300 text-center">
+                            Explore Features
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="order-1 lg:order-2 flex justify-center mt-10 lg:mt-0">
+                    <img class="w-full max-w-sm md:max-w-md lg:max-w-lg object-cover rounded-xl shadow-2xl transform hover:scale-105 transition duration-500 ease-in-out" 
+                        src="https://placehold.co/600x400/4f46e5/ffffff?text=STRYDE+APOLLO+RUNNER"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ffffff?text=Modern+Shoe+Image';"
+                        alt="Stryde Apollo Runner shoe, a modern athletic design.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Grid -->
+    <section id="featured" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-dark-gray mb-12">Featured Collections</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Trail -->
+                <div class="bg-light-bg rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition duration-300">
+                    <img class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" 
+                        src="https://placehold.co/400x300/1f2937/ffffff?text=Trail+Series"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/1f2937/ffffff?text=Trail+Series';"
+                        alt="Placeholder image for Trail Running Shoe.">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dark-gray">The Ascent Trail</h3>
+                        <p class="mt-2 text-gray-600">Unmatched grip and durability for rugged terrain.</p>
+                        <a href="#" class="mt-4 inline-block text-primary-blue font-semibold hover:text-indigo-600 transition duration-300">View Collection &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Lifestyle -->
+                <div class="bg-light-bg rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition duration-300">
+                    <img class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" 
+                        src="https://placehold.co/400x300/f87171/ffffff?text=Lifestyle+Series"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/f87171/ffffff?text=Lifestyle+Series';"
+                        alt="Placeholder image for Lifestyle Sneaker.">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dark-gray">The Downtown Walker</h3>
+                        <p class="mt-2 text-gray-600">The perfect blend of comfort and street style.</p>
+                        <a href="#" class="mt-4 inline-block text-primary-blue font-semibold hover:text-indigo-600 transition duration-300">View Collection &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Performance -->
+                <div class="bg-light-bg rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition duration-300">
+                    <img class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" 
+                        src="https://placehold.co/400x300/34d399/ffffff?text=Performance+Series"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/34d399/ffffff?text=Performance+Series';"
+                        alt="Placeholder image for Performance Running Shoe.">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dark-gray">The Velocity Racer</h3>
+                        <p class="mt-2 text-gray-600">Lightweight design engineered for race day speed.</p>
+                        <a href="#" class="mt-4 inline-block text-primary-blue font-semibold hover:text-indigo-600 transition duration-300">View Collection &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology/Features Section -->
+    <section id="features" class="py-20 bg-dark-gray text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center mb-12">The STRYDE Difference</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="text-center p-6 rounded-xl border border-gray-700 hover:bg-gray-800 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">Zero-G Foam</h3>
+                    <p class="text-gray-400">Our proprietary midsole material offers 40% better energy return and cushioning.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center p-6 rounded-xl border border-gray-700 hover:bg-gray-800 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0 0a3 3 0 100 6 3 3 0 000-6zm-9 3h3v5H3v-5z"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">Adaptive Fit Knit</h3>
+                    <p class="text-gray-400">A breathable, seamless upper that molds precisely to the shape of your foot.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center p-6 rounded-xl border border-gray-700 hover:bg-gray-800 transition duration-300">
+                    <svg class="w-10 h-10 mx-auto text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v14H9zm0 0v-4m0 4l-4 4m4-4h-4m12 0v-4m0 4l4 4m-4-4h4m-8-8v-4m0 4l-4-4m4 4h-4m4 4v-4m0 4l4 4m-4-4h4"></path></svg>
+                    <h3 class="text-xl font-bold mb-2">CarbonX Plate</h3>
+                    <p class="text-gray-400">A responsive carbon fiber plate for maximum propulsion and efficient toe-off.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Products Showcase -->
+    <section id="products" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-dark-gray mb-12">Latest Arrivals</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img class="w-full h-56 object-cover" 
+                        src="https://placehold.co/400x400/000000/ffffff?text=Velocity+Racer+Black"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Shoe+Image';"
+                        alt="Velocity Racer shoe in black.">
+                    <div class="p-4 text-center">
+                        <h4 class="text-xl font-semibold">Velocity Racer</h4>
+                        <p class="text-gray-500">Men's Running Shoe</p>
+                        <p class="text-2xl font-bold text-primary-blue mt-2">$189.99</p>
+                        <button class="w-full mt-4 bg-primary-blue text-white py-2 rounded-xl hover:bg-indigo-600 transition duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img class="w-full h-56 object-cover" 
+                        src="https://placehold.co/400x400/10b981/ffffff?text=Downtown+Walker+Mint"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/10b981/ffffff?text=Shoe+Image';"
+                        alt="Downtown Walker shoe in mint green.">
+                    <div class="p-4 text-center">
+                        <h4 class="text-xl font-semibold">Downtown Walker</h4>
+                        <p class="text-gray-500">Women's Lifestyle Trainer</p>
+                        <p class="text-2xl font-bold text-primary-blue mt-2">$129.00</p>
+                        <button class="w-full mt-4 bg-primary-blue text-white py-2 rounded-xl hover:bg-indigo-600 transition duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img class="w-full h-56 object-cover" 
+                        src="https://placehold.co/400x400/f59e0b/ffffff?text=Ascent+Trail+Orange"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/f59e0b/ffffff?text=Shoe+Image';"
+                        alt="Ascent Trail shoe in orange.">
+                    <div class="p-4 text-center">
+                        <h4 class="text-xl font-semibold">Ascent Trail</h4>
+                        <p class="text-gray-500">Unisex Hiking Shoe</p>
+                        <p class="text-2xl font-bold text-primary-blue mt-2">$149.99</p>
+                        <button class="w-full mt-4 bg-primary-blue text-white py-2 rounded-xl hover:bg-indigo-600 transition duration-300">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <img class="w-full h-56 object-cover" 
+                        src="https://placehold.co/400x400/4f46e5/ffffff?text=Apollo+Runner+Blue"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/4f46e5/ffffff?text=Shoe+Image';"
+                        alt="Apollo Runner shoe in blue.">
+                    <div class="p-4 text-center">
+                        <h4 class="text-xl font-semibold">Apollo Runner</h4>
+                        <p class="text-gray-500">Women's Performance Shoe</p>
+                        <p class="text-2xl font-bold text-primary-blue mt-2">$179.99</p>
+                        <button class="w-full mt-4 bg-primary-blue text-white py-2 rounded-xl hover:bg-indigo-600 transition duration-300">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action (CTA) Section -->
+    <section id="cta" class="py-16 bg-primary-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to Experience The Next Step?
+            </h2>
+            <p class="mt-4 text-lg leading-6 text-indigo-200">
+                Sign up for our newsletter to get 15% off your first order and exclusive access to new releases.
+            </p>
+            <form class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <input type="email" placeholder="Enter your email" required
+                       class="w-full sm:w-80 px-5 py-3 border border-transparent text-base rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-blue focus:ring-white transition duration-300" />
+                <button type="submit" class="w-full sm:w-auto px-5 py-3 border border-transparent text-base font-medium rounded-xl text-primary-blue bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-blue focus:ring-white transition duration-300 shadow-lg">
+                    Subscribe Now
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-gray text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1 -->
+                <div>
+                    <h5 class="text-lg font-bold mb-4 text-primary-blue">STRYDE</h5>
+                    <p class="text-sm text-gray-400">Innovation in every stride.</p>
+                </div>
+                <!-- Column 2 -->
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Shop</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Men's Shoes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Women's Shoes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Company</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sustainability</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4 -->
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Support</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-sm text-gray-500">&copy; 2025 STRYDE Footwear. All rights reserved. | Modern E-Commerce Demo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+            
+            // Toggle the visibility of the mobile menu
+            menu.classList.toggle('hidden');
+
+            // Toggle the icons
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            
+            // Set ARIA attribute for accessibility
+            const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close mobile menu when a link is clicked (for smoother navigation)
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('menu-icon-open').classList.remove('hidden');
+                document.getElementById('menu-icon-close').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
